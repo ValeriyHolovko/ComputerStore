@@ -18,6 +18,9 @@ public class StorageDevice extends ProductEntity {
     @Column
     private StorageDeviceType storageDeviceType;
 
+    public StorageDevice() {
+    }
+
     public StorageDevice(String brand, String model, double price, int capacity, StorageDeviceType storageDeviceType) {
         super(ProductType.StorageDevice, brand, model, price);
         this.capacity = capacity;

@@ -20,6 +20,9 @@ public class Display extends ProductEntity {
     @Column
     private DisplayType displayType;
 
+    public Display() {
+    }
+
     public Display(String brand, String model, double price, double size, int resolution, DisplayType displayType) {
         super(ProductType.Display, brand, model, price);
         this.size = size;

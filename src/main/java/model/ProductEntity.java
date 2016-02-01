@@ -10,8 +10,11 @@ import java.util.Date;
 @MappedSuperclass
 @Table(name = "products")
 // , uniqueConstraints = {@UniqueConstraint(columnNames = {"city","street"})}
-public class ProductEntity extends IdEntity{
+public class ProductEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     @Column
     private ProductType productType;
     @Column
@@ -21,11 +24,22 @@ public class ProductEntity extends IdEntity{
     @Column
     private double price;
 
+    public ProductEntity() {
+    }
+
     public ProductEntity(ProductType productType, String brand, String model, double price) {
         this.productType = productType;
         this.brand = brand;
         this.model = model;
         this.price = price;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public ProductType getProductType() {
@@ -59,6 +73,23 @@ public class ProductEntity extends IdEntity{
     public void setPrice(double price) {
         this.price = price;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ProductEntity productEntity = (ProductEntity) o;
+
+        return id == productEntity.id;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
+    }
+
 
 
     protected enum ProductType {

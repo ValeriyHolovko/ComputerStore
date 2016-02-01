@@ -18,6 +18,9 @@ public class VideoAdapter extends ProductEntity{
     @Column
     private VideoAdapterChipsetType videoAdapterChipsetType;
 
+    public VideoAdapter() {
+    }
+
     public VideoAdapter(String brand, String model, double price, int memory, VideoAdapterChipsetType videoAdapterChipsetType) {
         super(ProductType.VideoAdapter, brand, model, price);
         this.memory = memory;

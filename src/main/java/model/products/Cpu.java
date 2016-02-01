@@ -18,6 +18,9 @@ public class Cpu extends ProductEntity {
     @Column
     private int coresNumber;
 
+    public Cpu() {
+    }
+
     public Cpu(String brand, String model, double price, double frequency, int coresNumber) {
         super(ProductType.CPU, brand, model, price);
         this.frequency = frequency;

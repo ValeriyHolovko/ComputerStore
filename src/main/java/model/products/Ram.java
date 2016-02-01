@@ -18,6 +18,9 @@ public class Ram extends ProductEntity{
     @Column
     private int frequency;
 
+    public Ram() {
+    }
+
     public Ram(String brand, String model, double price, int capacity, int frequency) {
         super(ProductType.RAM, brand, model, price);
         this.capacity = capacity;
