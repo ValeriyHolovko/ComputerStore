@@ -1,11 +1,11 @@
 package model.users;
 
-import model.ProductEntity;
+import model.AddressEntity;
+import model.SaleEntity;
 import model.UserEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -15,8 +15,25 @@ import java.util.List;
 @Table(name = "customers")
 public class Customer extends UserEntity{
 
-    ///////////////////////////////////////
-    @Column
-    private List<ProductEntity> purchases;
+    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
+    private List<SaleEntity> purchases;
 
+    public Customer() {
+    }
+
+    public Customer(String name, String phone) {
+        super(name, phone);
+    }
+
+    public Customer(String name, String phone, Date birthday, AddressEntity addressEntity) {
+        super(name, phone, birthday, addressEntity);
+    }
+
+    public List<SaleEntity> getPurchases() {
+        return purchases;
+    }
+
+    public void setPurchases(List<SaleEntity> purchases) {
+        this.purchases = purchases;
+    }
 }

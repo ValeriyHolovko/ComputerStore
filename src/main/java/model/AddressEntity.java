@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by 1 on 01.02.2016.
@@ -20,6 +21,9 @@ public class AddressEntity {
     private String building;
     @Column
     private int apartment;
+
+    @OneToMany(mappedBy = "address", fetch = FetchType.EAGER)
+    private List<UserEntity> usersList;
 
     public AddressEntity() {
     }
@@ -69,6 +73,14 @@ public class AddressEntity {
 
     public void setApartment(int apartment) {
         this.apartment = apartment;
+    }
+
+    public List<UserEntity> getUsersList() {
+        return usersList;
+    }
+
+    public void setUsersList(List<UserEntity> usersList) {
+        this.usersList = usersList;
     }
 
     @Override

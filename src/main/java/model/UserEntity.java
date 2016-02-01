@@ -18,9 +18,11 @@ public class UserEntity {
     private String name;
     @Column
     private String phone;
-    @Column
+    @Temporal(TemporalType.DATE)
     private Date birthday;
-    @Column
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "address_id",
+            referencedColumnName = "id")
     private AddressEntity addressEntity;
 
 
