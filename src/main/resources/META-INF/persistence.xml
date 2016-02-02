@@ -10,12 +10,25 @@
 
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <!-- <class>ua.artcode.week7.jpa.model.Author</class> -->
+        <class>model.ProductEntity</class>
+        <class>model.SaleEntity</class>
+        <class>model.UserEntity</class>
+        <class>model.AddressEntity</class>
+        <class>model.users.Admin</class>
+        <class>model.users.Customer</class>
+        <class>model.users.Seller</class>
+        <class>model.products.Cpu</class>
+        <class>model.products.Display</class>
+        <class>model.products.Ram</class>
+        <class>model.products.StorageDevice</class>
+        <class>model.products.VideoAdapter</class>
+        <class>model.products.</class>
+
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
             <!--database must be created before init persistence.xml -->
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/ComputerStore" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/computer_store" />
             <property name="javax.persistence.jdbc.user" value="root" />
             <property name="javax.persistence.jdbc.password" value="UNTILYOUsee1996" />
 

@@ -1,7 +1,6 @@
 package model;
 
 import javax.persistence.*;
-import java.util.Date;
 
 /**
  * Created by 1 on 01.02.2016.
@@ -9,13 +8,13 @@ import java.util.Date;
 
 @MappedSuperclass
 @Table(name = "products")
-// , uniqueConstraints = {@UniqueConstraint(columnNames = {"city","street"})}
 public class ProductEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @Column
+    @Enumerated(EnumType.STRING)
     private ProductType productType;
     @Column
     private String brand;

@@ -8,5 +8,5 @@ public class Constants {
     private Constants() {
     }
 
-    public static final String DB_PROPERTIES_LOCATION = "ComputerStore\\src\\main\\java\\utils\\Constants.java";
+    public static final String DB_PROPERTIES_LOCATION = "resources\\db.properties";
 }

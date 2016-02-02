@@ -2,9 +2,7 @@ package model.products;
 
 import model.ProductEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by 1 on 01.02.2016.
@@ -16,6 +14,7 @@ public class StorageDevice extends ProductEntity {
     @Column
     private int capacity;
     @Column
+    @Enumerated(EnumType.STRING)
     private StorageDeviceType storageDeviceType;
 
     public StorageDevice() {
