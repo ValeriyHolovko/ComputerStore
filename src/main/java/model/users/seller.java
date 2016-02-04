@@ -13,7 +13,9 @@ import java.util.List;
  */
 
 @Entity
-@Table(name = "sellers")
+//@Table(name = "sellers")
+@Table(name = "users")
+@DiscriminatorValue("seller")
 public class Seller extends UserEntity{
 
     @Column

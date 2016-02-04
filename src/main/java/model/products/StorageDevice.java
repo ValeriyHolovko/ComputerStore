@@ -9,21 +9,30 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "storage_devices")
+@DiscriminatorValue("STORAGE_DEVICE")
 public class StorageDevice extends ProductEntity {
 
+    @Column
+    private String brand;
+    @Column
+    private String model;
     @Column
     private int capacity;
     @Column
     @Enumerated(EnumType.STRING)
     private StorageDeviceType storageDeviceType;
+    @Column
+    private double price;
 
     public StorageDevice() {
     }
 
-    public StorageDevice(String brand, String model, double price, int capacity, StorageDeviceType storageDeviceType) {
-        super(ProductType.StorageDevice, brand, model, price);
+    public StorageDevice(String brand, String model, int capacity, StorageDeviceType storageDeviceType, double price) {
+        this.brand = brand;
+        this.model = model;
         this.capacity = capacity;
         this.storageDeviceType = storageDeviceType;
+        this.price = price;
     }
 
     public int getCapacity() {

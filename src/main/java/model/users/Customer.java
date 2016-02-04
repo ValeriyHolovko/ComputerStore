@@ -12,7 +12,9 @@ import java.util.List;
  * Created by 1 on 01.02.2016.
  */
 @Entity
-@Table(name = "customers")
+//@Table(name = "customers")
+@Table(name = "users")
+@DiscriminatorValue("customer")
 public class Customer extends UserEntity{
 
     @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)

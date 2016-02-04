@@ -9,8 +9,13 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "displays")
+@DiscriminatorValue("DISPLAY")
 public class Display extends ProductEntity {
 
+    @Column
+    private String brand;
+    @Column
+    private String model;
     @Column
     private double size;
     @Column
@@ -18,15 +23,19 @@ public class Display extends ProductEntity {
     @Column
     @Enumerated(EnumType.STRING)
     private DisplayType displayType;
+    @Column
+    private double price;
 
     public Display() {
     }
 
-    public Display(String brand, String model, double price, double size, int resolution, DisplayType displayType) {
-        super(ProductType.Display, brand, model, price);
+    public Display(String brand, String model, double size, int resolution, DisplayType displayType, double price) {
+        this.brand = brand;
+        this.model = model;
         this.size = size;
         this.resolution = resolution;
         this.displayType = displayType;
+        this.price = price;
     }
 
     public double getSize() {

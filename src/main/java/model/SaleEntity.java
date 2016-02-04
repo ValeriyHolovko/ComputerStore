@@ -23,7 +23,7 @@ public class SaleEntity {
     private Date date;
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "customer_id",
-            referencedColumnName = "id")
+            referencedColumnName = "id",nullable = false)
     private Customer customer;
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "seller_id",

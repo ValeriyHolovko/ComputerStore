@@ -5,18 +5,21 @@ import javax.persistence.*;
 /**
  * Created by 1 on 01.02.2016.
  */
-
-@MappedSuperclass
+//@MappedSuperclass
+@Entity
 @Table(name = "products")
+@Inheritance(strategy=InheritanceType.JOINED)
+@DiscriminatorColumn(
+        name="type",
+        discriminatorType=DiscriminatorType.STRING
+)
 public class ProductEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    //@ManyToOne(targetEntity = SaleEntity.class)
     private int id;
-    @Column
-    @Enumerated(EnumType.STRING)
-    private ProductType productType;
-    @Column
+    @Column()
     private String brand;
     @Column
     private String model;
@@ -26,8 +29,7 @@ public class ProductEntity {
     public ProductEntity() {
     }
 
-    public ProductEntity(ProductType productType, String brand, String model, double price) {
-        this.productType = productType;
+    public ProductEntity(String brand, String model, double price) {
         this.brand = brand;
         this.model = model;
         this.price = price;
@@ -41,13 +43,6 @@ public class ProductEntity {
         this.id = id;
     }
 
-    public ProductType getProductType() {
-        return productType;
-    }
-
-    public void setProductType(ProductType productType) {
-        this.productType = productType;
-    }
 
     public String getModel() {
         return model;
@@ -90,8 +85,4 @@ public class ProductEntity {
     }
 
 
-
-    protected enum ProductType {
-        StorageDevice,CPU,RAM,Display,VideoAdapter
-    }
 }

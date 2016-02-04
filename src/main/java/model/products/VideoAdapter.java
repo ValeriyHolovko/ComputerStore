@@ -9,8 +9,13 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "video_adapters")
+@DiscriminatorValue("VIDEO_ADAPTER")
 public class VideoAdapter extends ProductEntity{
 
+    @Column
+    private String brand;
+    @Column
+    private String model;
     @Column
     private int memory;
     @Column
@@ -20,8 +25,9 @@ public class VideoAdapter extends ProductEntity{
     public VideoAdapter() {
     }
 
-    public VideoAdapter(String brand, String model, double price, int memory, VideoAdapterChipsetType videoAdapterChipsetType) {
-        super(ProductType.VideoAdapter, brand, model, price);
+    public VideoAdapter(String brand, String model, int memory, VideoAdapterChipsetType videoAdapterChipsetType) {
+        this.brand = brand;
+        this.model = model;
         this.memory = memory;
         this.videoAdapterChipsetType = videoAdapterChipsetType;
     }

@@ -3,6 +3,7 @@ package model.products;
 import model.ProductEntity;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -11,20 +12,29 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "ram")
+@DiscriminatorValue("RAM")
 public class Ram extends ProductEntity{
 
+    @Column
+    private String brand;
+    @Column
+    private String model;
     @Column
     private int capacity;
     @Column
     private int frequency;
+    @Column
+    private double price;
 
     public Ram() {
     }
 
-    public Ram(String brand, String model, double price, int capacity, int frequency) {
-        super(ProductType.RAM, brand, model, price);
+    public Ram(String brand, String model, int capacity, int frequency, double price) {
+        this.brand = brand;
+        this.model = model;
         this.capacity = capacity;
         this.frequency = frequency;
+        this.price = price;
     }
 
     public int getCapacity() {
@@ -42,4 +52,6 @@ public class Ram extends ProductEntity{
     public void setFrequency(int frequency) {
         this.frequency = frequency;
     }
+
+
 }

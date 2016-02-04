@@ -3,6 +3,7 @@ package model.products;
 import model.ProductEntity;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -11,20 +12,31 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "cpu")
+@DiscriminatorValue("CPU")
 public class Cpu extends ProductEntity {
 
+
+    @Column
+    private String brand;
+    @Column
+    private String model;
     @Column
     private double frequency;
     @Column
     private int coresNumber;
+    @Column
+    private double price;
+
 
     public Cpu() {
     }
 
-    public Cpu(String brand, String model, double price, double frequency, int coresNumber) {
-        super(ProductType.CPU, brand, model, price);
+    public Cpu(String brand, String model, double frequency, int coresNumber, double price) {
+        this.brand = brand;
+        this.model = model;
         this.frequency = frequency;
         this.coresNumber = coresNumber;
+        this.price = price;
     }
 
     public double getFrequency() {
@@ -42,4 +54,6 @@ public class Cpu extends ProductEntity {
     public void setCoresNumber(int coresNumber) {
         this.coresNumber = coresNumber;
     }
+
+
 }
