@@ -53,5 +53,14 @@ public class Ram extends ProductEntity{
         this.frequency = frequency;
     }
 
-
+    @Override
+    public String toString() {
+        return "Ram{" +
+                "brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", capacity=" + capacity +
+                ", frequency=" + frequency +
+                ", price=" + price +
+                '}';
+    }
 }

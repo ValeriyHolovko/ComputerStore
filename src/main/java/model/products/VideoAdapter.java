@@ -48,7 +48,17 @@ public class VideoAdapter extends ProductEntity{
         this.videoAdapterChipsetType = videoAdapterChipsetType;
     }
 
-    private enum VideoAdapterChipsetType {
+    public enum VideoAdapterChipsetType {
         AMD_RADEON,NVIDIA_GEFORCE
+    }
+
+    @Override
+    public String toString() {
+        return "VideoAdapter{" +
+                "brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", memory=" + memory +
+                ", videoAdapterChipsetType=" + videoAdapterChipsetType +
+                '}';
     }
 }

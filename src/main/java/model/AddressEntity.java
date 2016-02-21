@@ -1,5 +1,7 @@
 package model;
 
+import model.users.Customer;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -23,7 +25,7 @@ public class AddressEntity {
     private int apartment;
 
     @OneToMany(mappedBy = "address", fetch = FetchType.EAGER)
-    private List<UserEntity> usersList;
+    private List<Customer> usersList;
 
     public AddressEntity() {
     }
@@ -75,11 +77,11 @@ public class AddressEntity {
         this.apartment = apartment;
     }
 
-    public List<UserEntity> getUsersList() {
+    public List<Customer> getUsersList() {
         return usersList;
     }
 
-    public void setUsersList(List<UserEntity> usersList) {
+    public void setUsersList(List<Customer> usersList) {
         this.usersList = usersList;
     }
 
@@ -97,5 +99,16 @@ public class AddressEntity {
     @Override
     public int hashCode() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        return "AddressEntity{" +
+                "id=" + id +
+                ", city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", building='" + building + '\'' +
+                ", apartment=" + apartment +
+                '}';
     }
 }

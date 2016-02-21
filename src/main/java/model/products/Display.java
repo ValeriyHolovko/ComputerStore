@@ -62,7 +62,19 @@ public class Display extends ProductEntity {
         this.displayType = displayType;
     }
 
-    private enum DisplayType {
+    public enum DisplayType {
         LED,LCD,IPS,AMOLED
+    }
+
+    @Override
+    public String toString() {
+        return "Display{" +
+                "brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", size=" + size +
+                ", resolution=" + resolution +
+                ", displayType=" + displayType +
+                ", price=" + price +
+                '}';
     }
 }

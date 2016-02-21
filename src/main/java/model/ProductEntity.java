@@ -5,7 +5,6 @@ import javax.persistence.*;
 /**
  * Created by 1 on 01.02.2016.
  */
-//@MappedSuperclass
 @Entity
 @Table(name = "products")
 @Inheritance(strategy=InheritanceType.JOINED)
@@ -16,8 +15,7 @@ import javax.persistence.*;
 public class ProductEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    //@ManyToOne(targetEntity = SaleEntity.class)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column()
     private String brand;
@@ -84,5 +82,13 @@ public class ProductEntity {
         return id;
     }
 
-
+    @Override
+    public String toString() {
+        return "ProductEntity{" +
+                "id=" + id +
+                ", brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }

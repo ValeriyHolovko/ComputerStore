@@ -55,5 +55,14 @@ public class Cpu extends ProductEntity {
         this.coresNumber = coresNumber;
     }
 
-
+    @Override
+    public String toString() {
+        return "Cpu{" +
+                "brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", frequency=" + frequency +
+                ", coresNumber=" + coresNumber +
+                ", price=" + price +
+                '}';
+    }
 }

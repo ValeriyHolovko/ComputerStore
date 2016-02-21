@@ -51,7 +51,18 @@ public class StorageDevice extends ProductEntity {
         this.storageDeviceType = storageDeviceType;
     }
 
-    private enum StorageDeviceType {
+    public enum StorageDeviceType {
         HDD,SSD
+    }
+
+    @Override
+    public String toString() {
+        return "StorageDevice{" +
+                "brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", capacity=" + capacity +
+                ", storageDeviceType=" + storageDeviceType +
+                ", price=" + price +
+                '}';
     }
 }

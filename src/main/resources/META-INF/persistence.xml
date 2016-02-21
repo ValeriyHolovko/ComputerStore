@@ -16,7 +16,7 @@
         <class>model.AddressEntity</class>
         <class>model.users.Admin</class>
         <class>model.users.Customer</class>
-        <class>model.users.Seller</class>
+        <class>model.users.Manager</class>
         <class>model.products.Cpu</class>
         <class>model.products.Display</class>
         <class>model.products.Ram</class>

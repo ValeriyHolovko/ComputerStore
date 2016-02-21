@@ -7,44 +7,30 @@ import java.util.Date;
  * Created by 1 on 01.02.2016.
  */
 @Entity
-@Table(name = "users")
-//@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@Table(name = "users",uniqueConstraints = {@UniqueConstraint(columnNames = {"login"})})
+@Inheritance(strategy=InheritanceType.JOINED)
 @DiscriminatorColumn(
         name="type",
         discriminatorType=DiscriminatorType.STRING
 )
-@DiscriminatorValue(value="user")
+@DiscriminatorValue(value = "UNDEFINED")
 public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @Column
-    private String name;
+    private String login;
     @Column
-    private String phone;
-    @Temporal(TemporalType.DATE)
-    private Date birthday;
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "address_id",
-            referencedColumnName = "id")
-    private AddressEntity address;
+    private String password;
 
 
     public UserEntity() {
     }
 
-    public UserEntity(String name, String phone) {
-        this.name = name;
-        this.phone = phone;
-    }
-
-    public UserEntity(String name, String phone, Date birthday, AddressEntity address) {
-        this.name = name;
-        this.phone = phone;
-        this.birthday = birthday;
-        this.address = address;
+    public UserEntity(String login, String password) {
+        this.login = login;
+        this.password = password;
     }
 
     public int getId() {
@@ -55,37 +41,6 @@ public class UserEntity {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public Date getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
-    }
-
-    public AddressEntity getAddress() {
-        return address;
-    }
-
-    public void setAddress(AddressEntity address) {
-        this.address = address;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -101,5 +56,14 @@ public class UserEntity {
     @Override
     public int hashCode() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+//                ", password='" + password + '\'' +
+                '}';
     }
 }

@@ -1,7 +1,6 @@
 package model;
 
 import model.users.Customer;
-import model.users.Seller;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -25,19 +24,15 @@ public class SaleEntity {
     @JoinColumn(name = "customer_id",
             referencedColumnName = "id",nullable = false)
     private Customer customer;
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "seller_id",
-            referencedColumnName = "id")
-    private Seller seller;
+
 
     public SaleEntity() {
     }
 
-    public SaleEntity(List<ProductEntity> productList, Date date, Customer customer, Seller seller) {
+    public SaleEntity(List<ProductEntity> productList, Date date, Customer customer) {
         this.productList = productList;
         this.date = date;
         this.customer = customer;
-        this.seller = seller;
     }
 
     public int getId() {
@@ -72,11 +67,13 @@ public class SaleEntity {
         this.customer = customer;
     }
 
-    public Seller getSeller() {
-        return seller;
-    }
-
-    public void setSeller(Seller seller) {
-        this.seller = seller;
+    @Override
+    public String toString() {
+        return "SaleEntity{" +
+                "id=" + id +
+                ", productList=" + productList +
+                ", date=" + date +
+                ", customer=" + customer.getName() +
+                '}';
     }
 }

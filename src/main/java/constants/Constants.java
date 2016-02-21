@@ -8,5 +8,7 @@ public class Constants {
     private Constants() {
     }
 
+    public static final String LOCALE_RESOURCES_PATH = "src\\main\\resources\\locale";
+
     public static final String DB_PROPERTIES_LOCATION = "resources\\db.properties";
 }
