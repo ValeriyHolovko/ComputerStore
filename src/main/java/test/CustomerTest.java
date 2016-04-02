@@ -1,11 +1,8 @@
 package test;
 
-import controller.CustomerController;
-import controller.ICustomerController;
 import model.ProductEntity;
 import model.products.Cpu;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

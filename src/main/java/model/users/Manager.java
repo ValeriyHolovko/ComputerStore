@@ -19,6 +19,8 @@ public class Manager extends UserEntity{
 
     @Column
     private String name;
+    @OneToMany(mappedBy = "manager", fetch = FetchType.EAGER)
+    private List<SaleEntity> sales;
 
     public Manager() {
 

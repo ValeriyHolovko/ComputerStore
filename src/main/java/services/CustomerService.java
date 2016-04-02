@@ -1,14 +1,11 @@
-package controller;
+package services;
 
 import dao.IDao;
 import dao.ProductDao;
 import dao.SaleDao;
 import model.ProductEntity;
 import model.SaleEntity;
-import model.UserEntity;
-import model.products.Cpu;
 import model.users.Customer;
-import model.users.Manager;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,7 +14,7 @@ import java.util.List;
 /**
  * Created by 1 on 21.02.2016.
  */
-public class CustomerController implements ICustomerController {
+public class CustomerService implements ICustomerService {
 
     Customer customer;
     IDao<ProductEntity> productDao;
@@ -25,7 +22,7 @@ public class CustomerController implements ICustomerController {
 
     List<ProductEntity> bucket;
 
-    public CustomerController(Customer customer) {
+    public CustomerService(Customer customer) {
         this.customer = customer;
         productDao = new ProductDao();
         saleDao = new SaleDao();
@@ -34,6 +31,20 @@ public class CustomerController implements ICustomerController {
     @Override
     public List<ProductEntity> getAllProducts() {
         return productDao.getAll();
+    }
+
+    @Override
+    public ProductEntity getProduct(String brand, String model) {
+
+
+        for (ProductEntity product : productDao.getAll()) {
+            if (product.getBrand().equals(brand) &&
+                    product.getModel().equals(model)){
+                return product;
+            }
+        }
+
+        return null;
     }
 
     @Override
@@ -101,7 +112,11 @@ public class CustomerController implements ICustomerController {
 
     @Override
     public boolean deleteFromBucket(ProductEntity product) {
-        return bucket.remove(product);
+        boolean result = bucket.remove(product);
+        if (bucket.size() == 0){
+            clearBucket();
+        }
+        return result;
     }
 
     @Override
@@ -122,14 +137,6 @@ public class CustomerController implements ICustomerController {
             saleDao.insert(sale);
         } catch (Exception e) {
             return false;
-        }
-
-        for (ProductEntity product : bucket) {
-            try {
-                productDao.delete(product);
-            } catch (Exception e) {
-                return false;
-            }
         }
 
         this.clearBucket();

@@ -98,4 +98,32 @@ public class ProductDao implements IDao<ProductEntity> {
 
         return true;
     }
+
+    public boolean delete(List<ProductEntity> objKeys){
+        EntityManager manager = managerFactory.createEntityManager();
+        EntityTransaction transaction = manager.getTransaction();
+
+
+
+        try {
+            transaction.begin();
+
+            for (ProductEntity objKey : objKeys) {
+                ProductEntity objActual = manager.find(ProductEntity.class, objKey.getId());
+                if (objActual == null){
+                    throw new NoSuchElementException();
+                }
+                manager.remove(objActual);
+            }
+
+            transaction.commit();
+        } catch (Exception e) {
+            transaction.rollback();
+            return false;
+        } finally {
+            manager.close();
+        }
+
+        return true;
+    }
 }

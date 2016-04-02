@@ -1,14 +1,15 @@
-package controller;
+package services;
 
 import model.ProductEntity;
-import model.users.Customer;
 
 import java.util.List;
 
 /**
  * Created by 1 on 21.02.2016.
  */
-public interface ICustomerController {
+public interface ICustomerService {
+
+    ProductEntity getProduct(String brand, String model);
 
     List<ProductEntity> getAllProducts();
 

@@ -14,6 +14,6 @@ public interface IDao<T> {
 
     T findById(int id);
 
-    boolean delete(T obj);
+    boolean delete(T objKey);
 
 }
