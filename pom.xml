@@ -9,8 +9,7 @@
     <groupId>ValeriyHolovko</groupId>
     <artifactId>ComputerStore</artifactId>
     <version>1.0</version>
-    <packaging>pom</packaging>
-
+    <packaging>war</packaging>
 
 
     <properties>
@@ -125,10 +124,24 @@
             <version>${aspectj.version}</version>
             <scope>runtime</scope>
         </dependency>
+
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjtools</artifactId>
             <version>${aspectj.version}</version>
+        </dependency>
+
+        <!--Servlet-->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
         </dependency>
 
     </dependencies>
@@ -136,6 +149,7 @@
 
 
     <build>
+        <finalName>computer_store</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

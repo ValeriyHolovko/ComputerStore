@@ -33,7 +33,6 @@ public class ManagerService implements IManagerService {
         saleDao = new SaleDao();
     }
 
-
     @Override
     public List<Customer> findCustomers(String name) {
 
