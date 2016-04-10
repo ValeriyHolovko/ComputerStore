@@ -4,7 +4,6 @@ import model.AddressEntity;
 import model.UserEntity;
 import model.users.Admin;
 import model.users.Customer;
-import model.users.Manager;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -26,7 +25,6 @@ public class InsertUser {
 
         UserEntity user1 = new UserEntity("name1", "123");
         UserEntity user2 = new Customer("name2", "123", "customer1", "+380555", new Date(), address);
-        UserEntity user3 = new Manager("name3", "123", "manager1");
         UserEntity user4 = new Admin("name4", "123");
 
         try {
@@ -34,7 +32,6 @@ public class InsertUser {
 
             manager.persist(user1);
             manager.persist(user2);
-            manager.persist(user3);
             manager.persist(user4);
 
             transaction.commit();

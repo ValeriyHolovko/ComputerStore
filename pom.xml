@@ -24,7 +24,9 @@
         <logback.version>1.0.13</logback.version>
         <slf4j.version>1.7.5</slf4j.version>
         <aspectj.version>1.7.4</aspectj.version>
-        <log4j.version>1.2.17</log4j.version>
+        <log4j.version>${jstl.version}.17</log4j.version>
+        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+        <jstl.version>1.2</jstl.version>
 
         <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
 
@@ -135,13 +137,13 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
+            <version>${javax.servlet-api.version}</version>
         </dependency>
 
         <dependency>
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
-            <version>1.2</version>
+            <version>${jstl.version}</version>
         </dependency>
 
     </dependencies>

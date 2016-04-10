@@ -16,25 +16,19 @@ import javax.persistence.Table;
 public class Ram extends ProductEntity{
 
     @Column
-    private String brand;
-    @Column
-    private String model;
-    @Column
     private int capacity;
     @Column
     private int frequency;
-    @Column
-    private double price;
 
     public Ram() {
     }
 
     public Ram(String brand, String model, int capacity, int frequency, double price) {
-        this.brand = brand;
-        this.model = model;
+        super.brand = brand;
+        super.model = model;
+        super.price = price;
         this.capacity = capacity;
         this.frequency = frequency;
-        this.price = price;
     }
 
     public int getCapacity() {

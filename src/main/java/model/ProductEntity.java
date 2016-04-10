@@ -18,11 +18,11 @@ public class ProductEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column()
-    private String brand;
+    protected String brand;
     @Column
-    private String model;
+    protected String model;
     @Column
-    private double price;
+    protected double price;
 
     public ProductEntity() {
     }

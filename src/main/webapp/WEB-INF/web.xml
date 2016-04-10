@@ -4,14 +4,19 @@
             http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
          version="2.4" >
 
+    
+    <context-param>
+        <param-name>spring-location</param-name>
+        <param-value>classpath:app-context.xml</param-value>
+    </context-param>
 
     <servlet>
-        <servlet-name>ProductServlet</servlet-name>
-        <servlet-class>controller.ProductServlet</servlet-class>
+        <servlet-name>ProductGetServlet</servlet-name>
+        <servlet-class>controller.ProductGetServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>ProductServlet</servlet-name>
+        <servlet-name>ProductGetServlet</servlet-name>
         <url-pattern>/product/get</url-pattern>
     </servlet-mapping>
 

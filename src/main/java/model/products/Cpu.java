@@ -15,28 +15,22 @@ import javax.persistence.Table;
 @DiscriminatorValue("CPU")
 public class Cpu extends ProductEntity {
 
-
-    @Column
-    private String brand;
-    @Column
-    private String model;
     @Column
     private double frequency;
     @Column
     private int coresNumber;
-    @Column
-    private double price;
 
 
     public Cpu() {
     }
 
     public Cpu(String brand, String model, double frequency, int coresNumber, double price) {
-        this.brand = brand;
-        this.model = model;
+        super.brand = brand;
+        super.model = model;
+        super.price = price;
         this.frequency = frequency;
         this.coresNumber = coresNumber;
-        this.price = price;
+
     }
 
     public double getFrequency() {

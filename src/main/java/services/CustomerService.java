@@ -6,6 +6,8 @@ import dao.SaleDao;
 import model.ProductEntity;
 import model.SaleEntity;
 import model.users.Customer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,18 +16,23 @@ import java.util.List;
 /**
  * Created by 1 on 21.02.2016.
  */
+@Component
 public class CustomerService implements ICustomerService {
 
-    Customer customer;
+    @Autowired
     IDao<ProductEntity> productDao;
+    @Autowired
     IDao<SaleEntity> saleDao;
 
+    //TODO must be deleted and created via web???
+    Customer customer;
     List<ProductEntity> bucket;
 
     public CustomerService(Customer customer) {
         this.customer = customer;
-        productDao = new ProductDao();
-        saleDao = new SaleDao();
+
+        /* productDao = new ProductDao();
+        saleDao = new SaleDao();*/
     }
 
     @Override

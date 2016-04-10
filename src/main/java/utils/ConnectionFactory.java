@@ -15,9 +15,16 @@ public class ConnectionFactory {
 
         Class.forName("com.mysql.jdbc.Driver");
 
-        String url = DatabaseConnectionPropertiesLoader.getProperty("db.url");
-        String user = DatabaseConnectionPropertiesLoader.getProperty("db.name");
-        String password = DatabaseConnectionPropertiesLoader.getProperty("db.password");
+        String url = null;
+        String user = null;
+        String password = null;
+        try {
+            url = DatabaseConnectionPropertiesLoader.getProperty("db.url");
+            user = DatabaseConnectionPropertiesLoader.getProperty("db.name");
+            password = DatabaseConnectionPropertiesLoader.getProperty("db.password");
+        } catch (NoDatabasePropertyException e) {
+            throw new NoDatabasePropertyException("Have no information about database");
+        }
 
         return DriverManager.getConnection(url, user, password);
     }

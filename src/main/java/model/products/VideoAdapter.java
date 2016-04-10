@@ -13,10 +13,6 @@ import javax.persistence.*;
 public class VideoAdapter extends ProductEntity{
 
     @Column
-    private String brand;
-    @Column
-    private String model;
-    @Column
     private int memory;
     @Column
     @Enumerated(EnumType.STRING)
@@ -25,9 +21,10 @@ public class VideoAdapter extends ProductEntity{
     public VideoAdapter() {
     }
 
-    public VideoAdapter(String brand, String model, int memory, VideoAdapterChipsetType videoAdapterChipsetType) {
-        this.brand = brand;
-        this.model = model;
+    public VideoAdapter(String brand, String model, int memory, VideoAdapterChipsetType videoAdapterChipsetType, double price) {
+        super.brand = brand;
+        super.model = model;
+        super.price = price;
         this.memory = memory;
         this.videoAdapterChipsetType = videoAdapterChipsetType;
     }

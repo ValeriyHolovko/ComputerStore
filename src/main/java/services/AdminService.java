@@ -1,14 +1,13 @@
 package services;
 
 import dao.IDao;
-import dao.ProductDao;
-import dao.SaleDao;
-import dao.UserDao;
+import exceptions.NoBookFoundException;
 import model.ProductEntity;
 import model.SaleEntity;
 import model.UserEntity;
 import model.users.Customer;
-import model.users.Manager;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,20 +16,45 @@ import java.util.NoSuchElementException;
 /**
  * Created by 1 on 05.02.2016.
  */
-public class ManagerService implements IManagerService {
+@Component
+public class AdminService implements IAdminService {
 
-    ProductDao productDao;
+    @Autowired
+    IDao<ProductEntity> productDao;
+    @Autowired
     IDao<UserEntity> userDao;
+    @Autowired
     IDao<SaleEntity> saleDao;
 
-    Manager manager;
-
-    public ManagerService(Manager manager) {
-        this.manager = manager;
-
-        productDao = new ProductDao();
+    public AdminService() {
+            /*productDao = new ProductDao();
         userDao = new UserDao();
-        saleDao = new SaleDao();
+        saleDao = new SaleDao();*/
+
+    }
+
+    public IDao<ProductEntity> getProductDao() {
+        return productDao;
+    }
+
+    public void setProductDao(IDao<ProductEntity> productDao) {
+        this.productDao = productDao;
+    }
+
+    public IDao<UserEntity> getUserDao() {
+        return userDao;
+    }
+
+    public void setUserDao(IDao<UserEntity> userDao) {
+        this.userDao = userDao;
+    }
+
+    public IDao<SaleEntity> getSaleDao() {
+        return saleDao;
+    }
+
+    public void setSaleDao(IDao<SaleEntity> saleDao) {
+        this.saleDao = saleDao;
     }
 
     @Override
@@ -44,9 +68,9 @@ public class ManagerService implements IManagerService {
             if (userEntity instanceof Customer) {
 
                 Customer customer = (Customer) userEntity;
-                /*if (customer.getName()) {
+                if (customer.getName().toLowerCase().equals(name.toLowerCase())) {
                     customersForReturn.add((Customer) userEntity);
-                }*/
+                }
             }
         }
         return customersForReturn;
@@ -69,26 +93,34 @@ public class ManagerService implements IManagerService {
     public boolean sale(SaleEntity unacceptedSale) {
 
         try {
-            if (!productDao.delete(unacceptedSale.getProductList())){
-                return false;
+
+            for (ProductEntity productEntity : unacceptedSale.getProductList()) {
+                try {
+                    if (!productDao.delete(productEntity)) {
+                        return false;
+                    }
+
+                } catch (NoSuchElementException e) {
+                    return false;
+                }
             }
         } catch (Exception e) {
             return false;
         }
 
-        unacceptedSale.setManager(this.manager);
+        //unacceptedSale.setManager(this.manager);
         saleDao.update(unacceptedSale);
 
         return true;
     }
 
     @Override
-    public List<SaleEntity> getAcceptedSalesSales() {
+    public List<SaleEntity> getProcessedSales() {
         List<SaleEntity> forReturn = new ArrayList<>();
         List<SaleEntity> sales = saleDao.getAll();
 
         for (SaleEntity sale : sales) {
-            if (sale.getManager() != null){
+            if (sale.isProcessed()){
                 forReturn.add(sale);
             }
         }
@@ -97,12 +129,12 @@ public class ManagerService implements IManagerService {
     }
 
     @Override
-    public List<SaleEntity> getUnacceptedSales() {
+    public List<SaleEntity> getNewSales() {
         List<SaleEntity> forReturn = new ArrayList<>();
         List<SaleEntity> sales = saleDao.getAll();
 
         for (SaleEntity sale : sales) {
-            if (sale.getManager() == null){
+            if (!sale.isProcessed()){
                 forReturn.add(sale);
             }
         }
@@ -110,6 +142,10 @@ public class ManagerService implements IManagerService {
         return forReturn;
     }
 
+    @Override
+    public void addNewProduct(ProductEntity product) {
+        productDao.insert(product);
+    }
 
     @Override
     public List<ProductEntity> getAllProducts() {
@@ -173,6 +209,18 @@ public class ManagerService implements IManagerService {
         }
 
         return forReturn;
+    }
+
+
+    @Override
+    public ProductEntity getProductById(int id) throws NoBookFoundException {
+
+        ProductEntity product = productDao.findById(id);
+        if (product == null){
+            throw new NoBookFoundException("Book with id " + id + " was not found.");
+        }
+        return product;
+
     }
 
 

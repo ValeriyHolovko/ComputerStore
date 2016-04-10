@@ -1739,3 +1739,49 @@ line 1:8: unexpected token: *
 2016-04-05 18:41:44 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
 2016-04-05 18:41:45 WARN  EntityManagerFactoryRegistry:63 - HHH000436: Entity manager factory name (hibernate-unit) is already registered.  If entity manager will be clustered or passivated, specify a unique value for property 'hibernate.ejb.entitymanager_factory_name'
 2016-04-05 18:41:45 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-04-08 11:52:07 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-04-08 11:52:07 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-04-08 11:52:07 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-04-08 11:52:07 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-04-08 11:52:07 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-04-08 11:52:08 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-04-08 11:52:08 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/computer_store]
+2016-04-08 11:52:08 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-04-08 11:52:08 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-04-08 11:52:08 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-04-08 11:52:08 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-04-08 11:52:08 INFO  LobCreatorBuilderImpl:98 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+2016-04-08 11:52:08 WARN  AnnotationBinder:851 - HHH000457: Joined inheritance hierarchy [model.UserEntity] defined explicit @DiscriminatorColumn.  Legacy Hibernate behavior was to ignore the @DiscriminatorColumn.  However, as part of issue HHH-6911 we now apply the explicit @DiscriminatorColumn.  If you would prefer the legacy behavior, enable the `hibernate.discriminator.ignore_explicit_for_joined` setting (hibernate.discriminator.ignore_explicit_for_joined=true)
+2016-04-08 11:52:08 WARN  AnnotationBinder:851 - HHH000457: Joined inheritance hierarchy [model.ProductEntity] defined explicit @DiscriminatorColumn.  Legacy Hibernate behavior was to ignore the @DiscriminatorColumn.  However, as part of issue HHH-6911 we now apply the explicit @DiscriminatorColumn.  If you would prefer the legacy behavior, enable the `hibernate.discriminator.ignore_explicit_for_joined` setting (hibernate.discriminator.ignore_explicit_for_joined=true)
+2016-04-08 11:52:09 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-04-08 11:52:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: addresses
+2016-04-08 11:52:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: addresses
+2016-04-08 11:52:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: admins
+2016-04-08 11:52:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: admins
+2016-04-08 11:52:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: cpu
+2016-04-08 11:52:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: cpu
+2016-04-08 11:52:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: customers
+2016-04-08 11:52:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: customers
+2016-04-08 11:52:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: displays
+2016-04-08 11:52:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: displays
+2016-04-08 11:52:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: hibernate_sequence
+2016-04-08 11:52:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: hibernate_sequence
+2016-04-08 11:52:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: managers
+2016-04-08 11:52:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: managers
+2016-04-08 11:52:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: products
+2016-04-08 11:52:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: products
+2016-04-08 11:52:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: ram
+2016-04-08 11:52:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: ram
+2016-04-08 11:52:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: sales
+2016-04-08 11:52:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: sales
+2016-04-08 11:52:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: sales_products
+2016-04-08 11:52:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: sales_products
+2016-04-08 11:52:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: storage_devices
+2016-04-08 11:52:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: storage_devices
+2016-04-08 11:52:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: users
+2016-04-08 11:52:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: users
+2016-04-08 11:52:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: video_adapters
+2016-04-08 11:52:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: video_adapters
+2016-04-08 11:52:09 INFO  DriverManagerConnectionProviderImpl:236 - HHH000030: Cleaning up connection pool [jdbc:mysql://localhost:3306/computer_store]

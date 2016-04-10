@@ -1,7 +1,6 @@
 package model;
 
 import model.users.Customer;
-import model.users.Manager;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -25,25 +24,27 @@ public class SaleEntity {
     @JoinColumn(name = "customer_id",
             referencedColumnName = "id",nullable = false)
     private Customer customer;
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "manager_id",
-            referencedColumnName = "id")
-    private Manager manager;
+
+    @Column
+    private boolean processed;
 
     public SaleEntity() {
     }
+
 
     public SaleEntity(List<ProductEntity> productList, Date date, Customer customer) {
         this.productList = productList;
         this.date = date;
         this.customer = customer;
+        processed = false;
     }
 
-    public SaleEntity(List<ProductEntity> productList, Date date, Customer customer, Manager manager) {
-        this.productList = productList;
-        this.date = date;
-        this.customer = customer;
-        this.manager = manager;
+    public boolean isProcessed() {
+        return processed;
+    }
+
+    public void setProcessed(boolean processed) {
+        this.processed = processed;
     }
 
     public int getId() {
@@ -76,14 +77,6 @@ public class SaleEntity {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
-    }
-
-    public Manager getManager() {
-        return manager;
-    }
-
-    public void setManager(Manager manager) {
-        this.manager = manager;
     }
 
     @Override

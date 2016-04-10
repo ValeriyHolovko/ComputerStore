@@ -13,29 +13,23 @@ import javax.persistence.*;
 public class Display extends ProductEntity {
 
     @Column
-    private String brand;
-    @Column
-    private String model;
-    @Column
     private double size;
     @Column
     private int resolution;
     @Column
     @Enumerated(EnumType.STRING)
     private DisplayType displayType;
-    @Column
-    private double price;
 
     public Display() {
     }
 
     public Display(String brand, String model, double size, int resolution, DisplayType displayType, double price) {
-        this.brand = brand;
-        this.model = model;
+        super.brand = brand;
+        super.model = model;
+        super.price = price;
         this.size = size;
         this.resolution = resolution;
         this.displayType = displayType;
-        this.price = price;
     }
 
     public double getSize() {

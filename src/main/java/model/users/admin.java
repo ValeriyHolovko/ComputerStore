@@ -17,7 +17,6 @@ import java.util.Date;
 @DiscriminatorValue("ADMIN")
 public class Admin extends UserEntity {
 
-
     public Admin() {
     }
 

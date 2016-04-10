@@ -13,26 +13,20 @@ import javax.persistence.*;
 public class StorageDevice extends ProductEntity {
 
     @Column
-    private String brand;
-    @Column
-    private String model;
-    @Column
     private int capacity;
     @Column
     @Enumerated(EnumType.STRING)
     private StorageDeviceType storageDeviceType;
-    @Column
-    private double price;
 
     public StorageDevice() {
     }
 
     public StorageDevice(String brand, String model, int capacity, StorageDeviceType storageDeviceType, double price) {
-        this.brand = brand;
-        this.model = model;
+        super.brand = brand;
+        super.model = model;
+        super.price = price;
         this.capacity = capacity;
         this.storageDeviceType = storageDeviceType;
-        this.price = price;
     }
 
     public int getCapacity() {
