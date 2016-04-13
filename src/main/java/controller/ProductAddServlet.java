@@ -11,8 +11,11 @@ import java.io.IOException;
 /**
  * Created by Valeriy Holovko on 10.04.2016.
  */
-@WebServlet(urlPatterns = {"product/add"})
+@WebServlet(urlPatterns = {"/product/add"})
 public class ProductAddServlet extends BaseServlet{
+
+    public static final String PRODUCT_ADD_JSP = "/WEB-INF/pages/product-add.jsp";
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -23,11 +26,17 @@ public class ProductAddServlet extends BaseServlet{
         try {
             ProductEntity product = new ProductEntity(brand,model,Double.parseDouble(price));
             adminService.addNewProduct(product);
-            req.getRequestDispatcher("/" + APP_NAME + "/product/get?id=" + product.getId());
 
         } catch (ClassCastException e) {
             resp.sendRedirect("/" + APP_NAME + GENERAL_ERROR);
         }
 
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+
+        req.getRequestDispatcher(PRODUCT_ADD_JSP).forward(req,resp);
     }
 }

@@ -13,13 +13,13 @@ public class SpringInitContextListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
+
         ServletContext servletContext = sce.getServletContext();
-        String springLocation = servletContext.
-                getInitParameter("spring-location");
+        String springLocation = servletContext.getInitParameter("spring-location");
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext(springLocation);
         servletContext.setAttribute("springContext",applicationContext);
 
-        servletContext.setAttribute("APP_NAME", servletContext.getInitParameter("appName"));
+        servletContext.setAttribute("APP_NAME", servletContext.getInitParameter("app-name"));
 
     }
 

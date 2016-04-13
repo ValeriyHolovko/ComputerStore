@@ -20,7 +20,7 @@ public class Admin extends UserEntity {
     public Admin() {
     }
 
-    public Admin(String login, String password) {
-        super(login, password);
+    public Admin(String login, String mail, String password) {
+        super(login, mail, password);
     }
 }

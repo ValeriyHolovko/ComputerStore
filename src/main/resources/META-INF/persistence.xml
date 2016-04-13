@@ -4,9 +4,6 @@
              version="2.0">
 
     <persistence-unit name="hibernate-unit" transaction-type="RESOURCE_LOCAL">
-        <description>
-            Persistence unit for the JPA tutorial of the Hibernate Getting Started Guide
-        </description>
 
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
@@ -16,13 +13,12 @@
         <class>model.AddressEntity</class>
         <class>model.users.Admin</class>
         <class>model.users.Customer</class>
-        <class>model.users.Manager</class>
         <class>model.products.Cpu</class>
         <class>model.products.Display</class>
         <class>model.products.Ram</class>
         <class>model.products.StorageDevice</class>
         <class>model.products.VideoAdapter</class>
-        <class>model.products.</class>
+
 
 
         <properties>

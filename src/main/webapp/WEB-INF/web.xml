@@ -2,13 +2,27 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
             http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
-         version="2.4" >
+         version="2.4">
 
-    
+
     <context-param>
         <param-name>spring-location</param-name>
-        <param-value>classpath:app-context.xml</param-value>
+        <param-value>app-context.xml</param-value>
     </context-param>
+
+    <context-param>
+        <param-name>app-name</param-name>
+        <param-value>computer_store</param-value>
+    </context-param>
+
+    <filter>
+        <filter-name>AuthorizationFilter</filter-name>
+        <filter-class>filter.AuthorizationFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthorizationFilter</filter-name>
+        <url-pattern>/product/add</url-pattern>
+    </filter-mapping>
 
     <servlet>
         <servlet-name>ProductGetServlet</servlet-name>

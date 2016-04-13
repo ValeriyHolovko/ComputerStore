@@ -20,6 +20,8 @@ public class Customer extends UserEntity{
     @Column
     private String name;
     @Column
+    private String surname;
+    @Column
     private String phone;
     @Temporal(TemporalType.DATE)
     private Date birthday;
@@ -34,14 +36,21 @@ public class Customer extends UserEntity{
     public Customer() {
     }
 
-
-    public Customer(String login, String password, String name, String phone, Date birthday, AddressEntity address) {
-        super(login, password);
-        this.name = name;
-        this.phone = phone;
-        this.birthday = birthday;
+    public Customer(String login, String mail, String password, String name, String surname, String phone, AddressEntity address, Date birthday) {
+        super(login, mail, password);
         this.address = address;
-        this.purchases = new ArrayList<SaleEntity>();
+        this.birthday = birthday;
+        this.phone = phone;
+        this.surname = surname;
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public List<SaleEntity> getPurchases() {

@@ -23,16 +23,16 @@ public class InsertUser {
 
         AddressEntity address = new AddressEntity("Kiev", "Kopernika", "12", 30);
 
-        UserEntity user1 = new UserEntity("name1", "123");
-        UserEntity user2 = new Customer("name2", "123", "customer1", "+380555", new Date(), address);
-        UserEntity user4 = new Admin("name4", "123");
+        UserEntity user1 = new UserEntity("user1","mail@ua","123");
+        UserEntity user2 = new Customer("user2","mail123@ua","123","Vasia","Petichkin", "+380555", address, new Date());
+        UserEntity user3 = new Admin("user3","mail123@ua","123");
 
         try {
             transaction.begin();
 
             manager.persist(user1);
             manager.persist(user2);
-            manager.persist(user4);
+            manager.persist(user3);
 
             transaction.commit();
         } catch (Exception e) {

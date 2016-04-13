@@ -22,14 +22,41 @@ public class UserEntity {
     @Column
     private String login;
     @Column
+    private String mail;
+    @Column
     private String password;
 
 
     public UserEntity() {
     }
 
-    public UserEntity(String login, String password) {
+    public UserEntity(String login, String mail, String password) {
         this.login = login;
+        this.mail = mail;
+        this.password = password;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
         this.password = password;
     }
 

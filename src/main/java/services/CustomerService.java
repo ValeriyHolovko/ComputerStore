@@ -20,18 +20,21 @@ import java.util.List;
 public class CustomerService implements ICustomerService {
 
     @Autowired
-    IDao<ProductEntity> productDao;
+    ProductDao productDao;
     @Autowired
-    IDao<SaleEntity> saleDao;
+    SaleDao saleDao;
 
     //TODO must be deleted and created via web???
     Customer customer;
     List<ProductEntity> bucket;
 
+    public CustomerService() {
+    }
+
     public CustomerService(Customer customer) {
         this.customer = customer;
 
-        /* productDao = new ProductDao();
+       /* productDao = new ProductDao();
         saleDao = new SaleDao();*/
     }
 

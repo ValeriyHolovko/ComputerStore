@@ -27,16 +27,14 @@ public class InsertProduct {
         ProductEntity cpu1 = new Cpu("Intel","i7",2.7,4,5000);
         Cpu cpu2 = new Cpu("Intel","i5",1.44,4,3000);
         Ram ram = new Ram("Kingston","K400",2,4,400);
- /*       Admin admin = new Admin("Vasia","Petrov",new Date(),new AddressEntity("Kiev","Kopernika","12",30),2850.50);
-        Customer customer = new Customer("Kolia","Petrovich",new Date(),new AddressEntity("Kiev","Kopuchka","12",30));
-*/
+
         try {
             transaction.begin();
+
             manager.persist(cpu1);
             manager.persist(cpu2);
             manager.persist(ram);
-/*            manager.persist(admin);
-            manager.persist(customer);*/
+
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();
